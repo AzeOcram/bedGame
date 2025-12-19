@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgdk4qyr826dt"]
+[gd_scene load_steps=5 format=3 uid="uid://dgdk4qyr826dt"]
 
 [ext_resource type="Script" uid="uid://ck7vkh4h4ijf2" path="res://scripts/main_game.gd" id="1_72e8q"]
 [ext_resource type="Script" uid="uid://bthj3ffaxnxkr" path="res://scripts/ui.gd" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="3_d2op2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q7yvd"]
 
@@ -29,3 +30,8 @@ offset_right = 1089.0
 offset_bottom = 94.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
+
+[node name="Monsters" type="Node" parent="."]
+
+[node name="Monster1" parent="Monsters" instance=ExtResource("3_d2op2")]
+position = Vector2(-88, 319)
