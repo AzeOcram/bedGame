@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgdk4qyr826dt"]
+[gd_scene load_steps=6 format=3 uid="uid://dgdk4qyr826dt"]
 
 [ext_resource type="Script" uid="uid://ck7vkh4h4ijf2" path="res://scripts/main_game.gd" id="1_72e8q"]
 [ext_resource type="Script" uid="uid://bthj3ffaxnxkr" path="res://scripts/ui.gd" id="1_s3esy"]
 [ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="3_d2op2"]
+[ext_resource type="PackedScene" uid="uid://dehgwglsaf0e" path="res://scenes/bed.tscn" id="4_0rdsr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q7yvd"]
 
@@ -34,4 +35,8 @@ theme_override_font_sizes/font_size = 50
 [node name="Monsters" type="Node" parent="."]
 
 [node name="Monster1" parent="Monsters" instance=ExtResource("3_d2op2")]
+visible = false
 position = Vector2(-88, 319)
+
+[node name="Bed" parent="." instance=ExtResource("4_0rdsr")]
+position = Vector2(566, 177)

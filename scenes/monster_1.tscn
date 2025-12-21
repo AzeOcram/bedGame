@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://08ncmc5vqihx"]
 
-[ext_resource type="Script" uid="uid://dgev70j6lskh7" path="res://scenes/monster_1.gd" id="1_mmj5x"]
+[ext_resource type="Script" uid="uid://dgev70j6lskh7" path="res://scripts/monster_1.gd" id="1_mmj5x"]
 [ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="2_8chg6"]
 
 [node name="Monster1" type="Node2D"]
