@@ -5,9 +5,9 @@ enum Difficulty { EASY, MEDIUM, HARD }
 @onready var sprite = $Sprite2D
 @onready var timer = $TeleportTimer
 @onready var positions = [
-	$"../PositionA",
-	$"../PositionB",
-	$"../PositionC",
+	$"../PositionD",
+	$"../PositionE",
+	$"../PositionF",
 ]
 var current_index := 0
 

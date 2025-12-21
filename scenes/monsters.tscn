@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://biw7h748datrs"]
+
+[ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="1_64xjs"]
+[ext_resource type="PackedScene" uid="uid://uecujd70na7j" path="res://scenes/monster_2.tscn" id="2_ygbah"]
+[ext_resource type="PackedScene" uid="uid://bgefvl6fcyqno" path="res://scenes/monster_3.tscn" id="3_0jjrl"]
+
+[node name="Monsters" type="Node"]
+
+[node name="Monster1" parent="." instance=ExtResource("1_64xjs")]
+position = Vector2(604, 631)
+
+[node name="Monster2" parent="." instance=ExtResource("2_ygbah")]
+position = Vector2(859, -33)
+
+[node name="Monster3" parent="." groups=["monsters"] instance=ExtResource("3_0jjrl")]
+visible = false
+
+[node name="PositionA" type="Marker2D" parent="."]
+position = Vector2(605, 564)
+
+[node name="Marker2D" type="Marker2D" parent="."]

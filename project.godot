@@ -15,6 +15,10 @@ run/main_scene="uid://dgdk4qyr826dt"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+monsters="group for monsters"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgdk4qyr826dt"]
+[gd_scene load_steps=8 format=3 uid="uid://dgdk4qyr826dt"]
 
 [ext_resource type="Script" uid="uid://ck7vkh4h4ijf2" path="res://scripts/main_game.gd" id="1_72e8q"]
-[ext_resource type="Script" uid="uid://bthj3ffaxnxkr" path="res://scripts/ui.gd" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://mgirxni3b3s2" path="res://scenes/ui.tscn" id="2_ygxny"]
 [ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="3_d2op2"]
 [ext_resource type="PackedScene" uid="uid://dehgwglsaf0e" path="res://scenes/bed.tscn" id="4_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://uecujd70na7j" path="res://scenes/monster_2.tscn" id="4_ygxny"]
+[ext_resource type="PackedScene" uid="uid://bgefvl6fcyqno" path="res://scenes/monster_3.tscn" id="5_wi4c7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q7yvd"]
 
@@ -15,28 +17,36 @@ position = Vector2(576.25, 323.75)
 scale = Vector2(1152, 648)
 texture = SubResource("CanvasTexture_q7yvd")
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("1_s3esy")
-
-[node name="ProgressBar" type="ProgressBar" parent="UI"]
-offset_left = 331.0
-offset_top = 32.0
-offset_right = 890.0
-offset_bottom = 73.0
-
-[node name="Label" type="Label" parent="UI"]
-offset_left = 967.0
-offset_top = 16.0
-offset_right = 1089.0
-offset_bottom = 94.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+[node name="UI" parent="." instance=ExtResource("2_ygxny")]
 
 [node name="Monsters" type="Node" parent="."]
 
 [node name="Monster1" parent="Monsters" instance=ExtResource("3_d2op2")]
+position = Vector2(604, 631)
+
+[node name="Monster2" parent="Monsters" instance=ExtResource("4_ygxny")]
+position = Vector2(859, -33)
+
+[node name="Monster3" parent="Monsters" groups=["monsters"] instance=ExtResource("5_wi4c7")]
 visible = false
-position = Vector2(-88, 319)
+
+[node name="PositionA" type="Marker2D" parent="Monsters"]
+position = Vector2(603, 523)
+
+[node name="PositionB" type="Marker2D" parent="Monsters"]
+position = Vector2(604, 410)
+
+[node name="PositionC" type="Marker2D" parent="Monsters"]
+position = Vector2(605, 286)
+
+[node name="PositionD" type="Marker2D" parent="Monsters"]
+position = Vector2(1002, 93)
+
+[node name="PositionE" type="Marker2D" parent="Monsters"]
+position = Vector2(787, 346)
+
+[node name="PositionF" type="Marker2D" parent="Monsters"]
+position = Vector2(792, 132)
 
 [node name="Bed" parent="." instance=ExtResource("4_0rdsr")]
-position = Vector2(566, 177)
+position = Vector2(602, 97)
