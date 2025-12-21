@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dehgwglsaf0e"]
+
+[ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="1_akt7f"]
+[ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
+size = Vector2(117, 132)
+
+[node name="Bed" type="Node2D"]
+script = ExtResource("1_fqty4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(47.5, 54.75)
+texture = ExtResource("1_akt7f")
+
+[node name="BlanketArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlanketArea"]
+position = Vector2(47.5, 149)
+shape = SubResource("RectangleShape2D_fqty4")
+
+[node name="RightArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
+position = Vector2(173, 54)
+shape = SubResource("RectangleShape2D_fqty4")
+
+[node name="LeftArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
+position = Vector2(-79, 52)
+shape = SubResource("RectangleShape2D_fqty4")
+
+[connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
+[connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]
+[connection signal="input_event" from="LeftArea" to="." method="_on_left_area_input_event"]
