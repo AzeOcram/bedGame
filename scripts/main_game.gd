@@ -20,7 +20,6 @@ func _ready() -> void:
 	print("Bed position: ", $Bed.global_position)
 	print("Monster1 position: ", $Monsters/Monster1.global_position)
 	print("Monster2 position: ", $Monsters/Monster2.global_position)
-	print("Monster3 position: ", $Monsters/Monster3.global_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
