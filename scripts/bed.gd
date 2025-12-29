@@ -6,6 +6,7 @@ var monsters_in_right = []
 var monsters_in_left = []
 
 func _ready() -> void:
+	#connect signals
 	$BlanketArea.body_entered.connect(_on_blanket_body_entered)
 	$BlanketArea.body_exited.connect(_on_blanket_body_exited)
 	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dehgwglsaf0e"]
 
-[ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="1_akt7f"]
 [ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
+[ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/Bed.png" id="2_fqty4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
 size = Vector2(300.25, 317.5)
@@ -16,9 +16,9 @@ size = Vector2(298.5, 314.5)
 script = ExtResource("1_fqty4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, 195)
-scale = Vector2(2.231, 3)
-texture = ExtResource("1_akt7f")
+position = Vector2(-3.500008, 125)
+scale = Vector2(0.25397375, 0.295)
+texture = ExtResource("2_fqty4")
 
 [node name="BlanketArea" type="Area2D" parent="."]
 
