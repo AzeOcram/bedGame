@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dehgwglsaf0e"]
+[gd_scene load_steps=7 format=3 uid="uid://dehgwglsaf0e"]
 
 [ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
 [ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/Bed.png" id="2_fqty4"]
+[ext_resource type="Texture2D" uid="uid://bcffm7r3moo6s" path="res://assets/art/Shelf.png" id="3_raxto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
 size = Vector2(300.25, 317.5)
@@ -37,6 +38,17 @@ shape = SubResource("RectangleShape2D_raxto")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
 position = Vector2(-308.25, 131.75)
 shape = SubResource("RectangleShape2D_853xm")
+
+[node name="Shelf1" type="Sprite2D" parent="."]
+position = Vector2(-214, 26)
+scale = Vector2(0.115013815, 0.10654635)
+texture = ExtResource("3_raxto")
+
+[node name="Shelf2" type="Sprite2D" parent="."]
+position = Vector2(217, 27)
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("3_raxto")
+flip_h = true
 
 [connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
 [connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]
