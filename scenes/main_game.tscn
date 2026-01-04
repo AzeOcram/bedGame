@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgdk4qyr826dt"]
+[gd_scene load_steps=8 format=3 uid="uid://dgdk4qyr826dt"]
 
 [ext_resource type="Script" uid="uid://ck7vkh4h4ijf2" path="res://scripts/main_game.gd" id="1_72e8q"]
 [ext_resource type="Texture2D" uid="uid://6arm7uh087mx" path="res://assets/art/Background.png" id="2_wi4c7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="3_d2op2"]
 [ext_resource type="PackedScene" uid="uid://dehgwglsaf0e" path="res://scenes/bed.tscn" id="4_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://uecujd70na7j" path="res://scenes/monster_2.tscn" id="4_ygxny"]
+[ext_resource type="PackedScene" uid="uid://bgefvl6fcyqno" path="res://scenes/monster_3.tscn" id="6_wi4c7"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_72e8q")
@@ -20,28 +21,44 @@ texture = ExtResource("2_wi4c7")
 [node name="Monsters" type="Node" parent="."]
 
 [node name="Monster1" parent="Monsters" instance=ExtResource("3_d2op2")]
-position = Vector2(604, 631)
+position = Vector2(224, 685)
 
 [node name="Monster2" parent="Monsters" instance=ExtResource("4_ygxny")]
 position = Vector2(859, -33)
 
+[node name="Monster3" parent="Monsters" instance=ExtResource("6_wi4c7")]
+
 [node name="PositionA" type="Marker2D" parent="Monsters"]
-position = Vector2(603, 523)
+position = Vector2(606, 640)
 
 [node name="PositionB" type="Marker2D" parent="Monsters"]
-position = Vector2(604, 410)
+position = Vector2(602, 543)
 
 [node name="PositionC" type="Marker2D" parent="Monsters"]
-position = Vector2(605, 286)
+position = Vector2(605, 432)
 
 [node name="PositionD" type="Marker2D" parent="Monsters"]
-position = Vector2(1002, 93)
+position = Vector2(819, 236)
 
 [node name="PositionE" type="Marker2D" parent="Monsters"]
-position = Vector2(787, 346)
+position = Vector2(992, 383)
 
 [node name="PositionF" type="Marker2D" parent="Monsters"]
-position = Vector2(792, 132)
+position = Vector2(772, 384)
+
+[node name="PositionG" type="Marker2D" parent="Monsters"]
+position = Vector2(403, 227)
+
+[node name="PositionH" type="Marker2D" parent="Monsters"]
+position = Vector2(272, 419)
+
+[node name="Positioni" type="Marker2D" parent="Monsters"]
+position = Vector2(440, 405)
 
 [node name="Bed" parent="." instance=ExtResource("4_0rdsr")]
 position = Vector2(606, 248)
+
+[node name="DarkFilter" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="DarkFilter"]
+color = Color(0.078431375, 0.078431375, 0.078431375, 1)

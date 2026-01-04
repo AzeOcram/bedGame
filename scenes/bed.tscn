@@ -1,17 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://dehgwglsaf0e"]
+[gd_scene load_steps=15 format=3 uid="uid://dehgwglsaf0e"]
 
 [ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
 [ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/Bed.png" id="2_fqty4"]
 [ext_resource type="Texture2D" uid="uid://bcffm7r3moo6s" path="res://assets/art/Shelf.png" id="3_raxto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
-size = Vector2(300.25, 317.5)
+size = Vector2(300.25, 186.75)
+
+[sub_resource type="Gradient" id="Gradient_853xm"]
+offsets = PackedFloat32Array(0.032258064, 1)
+colors = PackedColorArray(0.9483871, 0.9483871, 0.9483871, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x7btf"]
+gradient = SubResource("Gradient_853xm")
+fill = 1
+fill_from = Vector2(0.51914895, 0.4787234)
+fill_to = Vector2(0.906383, 0.095744684)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_raxto"]
-size = Vector2(294, 315.5)
+size = Vector2(356, 197)
+
+[sub_resource type="Gradient" id="Gradient_x7btf"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_exsg2"]
+gradient = SubResource("Gradient_x7btf")
+fill = 1
+fill_from = Vector2(0.50212765, 0.5)
+fill_to = Vector2(0.8638298, 0.09148936)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_853xm"]
-size = Vector2(298.5, 314.5)
+size = Vector2(357.25, 211.25)
+
+[sub_resource type="Gradient" id="Gradient_exsg2"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pqek7"]
+gradient = SubResource("Gradient_exsg2")
+fill = 1
+fill_from = Vector2(0.5276596, 0.47021276)
+fill_to = Vector2(0.8851064, 0.09148936)
+
+[sub_resource type="Gradient" id="Gradient_raxto"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_853xm"]
+gradient = SubResource("Gradient_raxto")
+fill = 1
+fill_from = Vector2(0.51914895, 0.53404254)
+fill_to = Vector2(0.8425532, 0.17234042)
 
 [node name="Bed" type="Node2D"]
 script = ExtResource("1_fqty4")
@@ -24,31 +61,58 @@ texture = ExtResource("2_fqty4")
 [node name="BlanketArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlanketArea"]
-position = Vector2(-1, 313)
+position = Vector2(-1, 244.625)
 shape = SubResource("RectangleShape2D_fqty4")
+
+[node name="PointLight2D" type="PointLight2D" parent="BlanketArea"]
+position = Vector2(-2, 265)
+scale = Vector2(5.828, 5.156)
+color = Color(1, 0.9647059, 0.8, 1)
+texture = SubResource("GradientTexture2D_x7btf")
 
 [node name="RightArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(307, 110)
+position = Vector2(350, 169.5)
 shape = SubResource("RectangleShape2D_raxto")
+
+[node name="PointLight2D" type="PointLight2D" parent="RightArea"]
+position = Vector2(210, 31)
+scale = Vector2(6.2187495, 5.632812)
+color = Color(1, 0.9647059, 0.8, 1)
+texture = SubResource("GradientTexture2D_exsg2")
 
 [node name="LeftArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(-308.25, 131.75)
+position = Vector2(-336.375, 161.625)
 shape = SubResource("RectangleShape2D_853xm")
+
+[node name="PointLight2D" type="PointLight2D" parent="LeftArea"]
+position = Vector2(-210, 31)
+scale = Vector2(6.219, 5.633)
+color = Color(1, 0.9647059, 0.8, 1)
+texture = SubResource("GradientTexture2D_pqek7")
 
 [node name="Shelf1" type="Sprite2D" parent="."]
 position = Vector2(-214, 26)
-scale = Vector2(0.115013815, 0.10654635)
+scale = Vector2(0.115, 0.115)
 texture = ExtResource("3_raxto")
 
 [node name="Shelf2" type="Sprite2D" parent="."]
-position = Vector2(217, 27)
+position = Vector2(214, 26)
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("3_raxto")
 flip_h = true
+
+[node name="MainLight" type="PointLight2D" parent="."]
+position = Vector2(-8, -2)
+scale = Vector2(6.1875, 3.28125)
+color = Color(1, 0.9647059, 0.8, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_853xm")
 
 [connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
 [connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]
