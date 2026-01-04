@@ -6,11 +6,11 @@ func _ready():
 	get_viewport().size = Vector2(640, 360)
 	
 	# Create and configure the background
-	var background = ColorRect.new()
-	background.color = Color(0.2, 0.1, 0.2)  # Dark purple base
-	background.anchor_right = 1.0
-	background.anchor_bottom = 1.0
-	add_child(background)
+	#var background = ColorRect.new()
+	#background.color = Color(0.2, 0.1, 0.2)  # Dark purple base
+	#background.anchor_right = 1.0
+	#background.anchor_bottom = 1.0
+	#add_child(background)
 	
 	# Create a gradient overlay
 	var gradient_overlay = TextureRect.new()

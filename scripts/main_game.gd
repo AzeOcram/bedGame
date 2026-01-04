@@ -1,10 +1,11 @@
 extends Node2D
 
 @onready var ui = $UI
+var elapsed_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ui.startProgressBar(3.0)
+	ui.startProgressBar(1.0)
 	ui.startTimer(100)
 	
 	# DEBUG: Check if bed and monsters exist
@@ -24,4 +25,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#decreases progress by 2 every 5 seconds
+	elapsed_time += delta
+	if elapsed_time > 5:
+		ui.decreaseProgress(2)
+		elapsed_time = 0
