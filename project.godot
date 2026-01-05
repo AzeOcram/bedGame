@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bed Game"
-run/main_scene="uid://jkgpg2lv0yk7"
+run/main_scene="uid://d357qsl14u02s"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
