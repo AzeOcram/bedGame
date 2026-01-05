@@ -7,7 +7,11 @@ var monsters_in_blanket := []
 var monsters_in_right := []
 var monsters_in_left := []
 
-var flicker_active := false
+var blackout_running := false
+@onready var monster1: CharacterBody2D = $"../Monsters/Monster1"
+@onready var progress :=  $"../UI/ProgressBar"
+
+
 
 # -------------------------
 # Ready
@@ -90,18 +94,21 @@ func _handle_light(event, light: PointLight2D, monster_array):
 	if event.pressed:
 		_turn_off_all_lights()
 		light.visible = true
-
-		# Only flicker if there is at least one monster
-		if monster_array.size() > 0:
-			# Start a short flicker timed with reset
-			await _flicker_for_reset(light, 0.3)
-
-			# Reset monsters
-			for monster in monster_array:
-				if is_instance_valid(monster):
+		
+		if monster_array.size() > 0 and monster_array[0] != monster1:
+			$AudioStreamPlayer.play()
+			await get_tree().create_timer(0.2).timeout
+			light.visible = false
+			
+			for monster in monster_array: 
+				if is_instance_valid(monster): 
 					monster.reset_state()
+			await get_tree().create_timer(0.3).timeout
+			light.visible = true
+		
 	else:
 		light.visible = false
+
 
 
 # -------------------------
@@ -111,13 +118,3 @@ func _turn_off_all_lights():
 	$BlanketArea/PointLight2D.visible = false
 	$RightArea/PointLight2D.visible = false
 	$LeftArea/PointLight2D.visible = false
- 
-func _flicker_for_reset(light: PointLight2D, duration: float) -> void:
-	var flicker_count := 3
-	var flicker_interval := duration / (flicker_count * 2) # on + off per flicker
-
-	for i in range(flicker_count):
-		light.visible = false
-		await get_tree().create_timer(flicker_interval).timeout
-		light.visible = true
-		await get_tree().create_timer(flicker_interval).timeout

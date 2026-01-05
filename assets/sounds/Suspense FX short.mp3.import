@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dn5iu7x7u64d3"
+path="res://.godot/imported/Suspense FX short.mp3-4f1dfed8076bb81342856c4858cfea00.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Suspense FX short.mp3"
+dest_files=["res://.godot/imported/Suspense FX short.mp3-4f1dfed8076bb81342856c4858cfea00.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

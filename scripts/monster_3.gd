@@ -4,10 +4,13 @@ enum Difficulty { EASY, MEDIUM, HARD }
 @export var difficulty: Difficulty = Difficulty.HARD
 @onready var sprite = $Sprite2D
 @onready var timer = $TeleportTimer
+@onready var jumpscare_sound = $AudioStreamPlayer
+@onready var jumpscare_overlay = $JumpscareOverlay
 @onready var positions = [
 	$"../PositionG",
 	$"../PositionH",
 	$"../PositionI",
+	$"../JumpscarePos",
 ]
 var current_index := 0
 
@@ -47,3 +50,25 @@ func reset_state(): #resets position
 	current_index = 0
 	global_position = positions[current_index].global_position
 	start_timer() 
+
+func jumpscare() -> void:
+	# Show overlay and play sound
+	jumpscare_overlay.visible = true
+	jumpscare_sound.play()
+	
+	# Wait a moment before shaking (build tension)
+	await get_tree().create_timer(0.3).timeout
+	
+	# Shake effect on overlay (longer and more intense)
+	var original_pos = jumpscare_overlay.position
+	for i in range(20):  # More shakes (was 5)
+		jumpscare_overlay.position = original_pos + Vector2(randi() % 30 - 15, randi() % 30 - 15)
+		await get_tree().create_timer(0.08).timeout  # Slower shake (was 0.05)
+	
+	# Hold the jumpscare image still for a moment
+	jumpscare_overlay.position = original_pos
+	await get_tree().create_timer(1.0).timeout  # Hold for 1 second
+	
+	# Reset overlay
+	jumpscare_overlay.visible = false
+	reset_state()

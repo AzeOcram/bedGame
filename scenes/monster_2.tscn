@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://uecujd70na7j"]
+[gd_scene load_steps=5 format=3 uid="uid://uecujd70na7j"]
 
 [ext_resource type="Script" uid="uid://d114it2olww4g" path="res://scripts/monster_2.gd" id="1_727yn"]
 [ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="2_g3y7j"]
+[ext_resource type="AudioStream" uid="uid://o4ritpghlmda" path="res://assets/sounds/Jumpscare.mp3" id="3_cv6h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3y7j"]
 size = Vector2(61, 62)
@@ -18,5 +19,8 @@ texture = ExtResource("2_g3y7j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -1)
 shape = SubResource("RectangleShape2D_g3y7j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cv6h0")
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]
