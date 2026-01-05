@@ -1,34 +1,33 @@
 extends Node2D
 
 @onready var ui = $UI
+@onready var game_over_screen = $GameOver  # Add the GameOver scene as a child
+var jumpscare_running := false
 var elapsed_time = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	
 	ui.startProgressBar(1.0)
 	ui.startTimer(100)
-	
-	# DEBUG: Check if bed and monsters exist
-	await get_tree().create_timer(0.5).timeout
-	print("=== SCENE CHECK ===")
-	print("Bed exists: ", has_node("Bed"))
-	print("Monsters exists: ", has_node("Monsters"))
-	if has_node("Monsters"):
-		print("Monster1 exists: ", $Monsters.has_node("Monster1"))
-	
-	# Check positions
-	print("=== POSITIONS ===")
-	print("Bed position: ", $Bed.global_position)
-	print("Monster1 position: ", $Monsters/Monster1.global_position)
-	print("Monster2 position: ", $Monsters/Monster2.global_position)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#decreases progress by 2 every 5 seconds
 	elapsed_time += delta
 	if elapsed_time > 5:
 		ui.decreaseProgress(2)
 		elapsed_time = 0
+	
+	# Jumpscare check
+	var jumpscare_pos = $Monsters/JumpscarePos
+	for monster in get_tree().get_nodes_in_group("monsters"):
+		if is_instance_valid(monster):
+			if monster.global_position.distance_to(jumpscare_pos.global_position) < 1.0:
+				if not jumpscare_running:
+					jumpscare_running = true
+					$DarkFilter/CanvasModulate.visible = false
+					await monster.jumpscare()
+					trigger_game_over()  # Game over after jumpscare!
+					jumpscare_running = false
+				break
+
+func trigger_game_over():
+	if game_over_screen:
+		game_over_screen.show_game_over()

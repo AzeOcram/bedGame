@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpmq1b5yvp5up"
+path="res://.godot/imported/Transitioning to the Game.mp3-91ddf0e0a57f1979e51ac921b290cbf2.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Transitioning to the Game.mp3"
+dest_files=["res://.godot/imported/Transitioning to the Game.mp3-91ddf0e0a57f1979e51ac921b290cbf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
