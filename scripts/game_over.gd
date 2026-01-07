@@ -6,7 +6,6 @@ extends CanvasLayer
 func _ready():
 	# Hide by default
 	visible = false
-	
 	# Connect buttons
 	retry_button.pressed.connect(_on_retry_pressed)
 	menu_button.pressed.connect(_on_menu_pressed)

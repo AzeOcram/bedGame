@@ -21,3 +21,5 @@ shape = SubResource("RectangleShape2D_mxkcy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_04lg0")
+
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]

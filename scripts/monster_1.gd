@@ -5,7 +5,7 @@ enum Difficulty { EASY, MEDIUM, HARD }
 @onready var sprite = $Sprite2D
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
-@onready var jumpscare_overlay = $JumpscareOverlay
+@onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
 @onready var positions = [
 	$"../Initial",
 	$"../PositionA",

@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 			if monster.global_position.distance_to(jumpscare_pos.global_position) < 1.0:
 				if not jumpscare_running:
 					jumpscare_running = true
-					$DarkFilter/CanvasModulate.visible = false
 					await monster.jumpscare()
 					trigger_game_over()  # Game over after jumpscare!
 					jumpscare_running = false

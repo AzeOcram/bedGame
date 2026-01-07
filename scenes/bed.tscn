@@ -109,7 +109,7 @@ flip_h = true
 [node name="MainLight" type="PointLight2D" parent="."]
 position = Vector2(-8, -2)
 scale = Vector2(6.1875, 3.28125)
-color = Color(1, 0.9647059, 0.8, 1)
+color = Color(1, 0.9647059, 0.8, 0.34901962)
 energy = 2.0
 shadow_enabled = true
 shadow_filter = 1
@@ -118,6 +118,9 @@ texture = SubResource("GradientTexture2D_853xm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_853xm")
 volume_db = -10.0
+
+[node name="Player" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
 
 [connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
 [connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]
