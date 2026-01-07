@@ -7,6 +7,20 @@ var monsters_in_blanket := []
 var monsters_in_right := []
 var monsters_in_left := []
 
+# -------------------------
+# Player Sprites
+# -------------------------
+@onready var player_sprite: Sprite2D = $Player
+
+var textures := [
+	preload("res://assets/art/Player/player_look_down_full.png"),
+	preload("res://assets/art/Player/player_look_left.png"),
+	preload("res://assets/art/Player/player_look_right.png")
+]
+
+# -------------------------
+# Util vars
+# -------------------------
 var blackout_running := false
 @onready var monster1: CharacterBody2D = $"../Monsters/Monster1"
 @onready var progress :=  $"../UI/ProgressBar"
@@ -65,15 +79,17 @@ func _on_left_body_exited(body):
 func _on_blanket_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		_handle_light(event, $BlanketArea/PointLight2D, monsters_in_blanket)
+		player_sprite.texture = textures[0]
 
 func _on_right_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		_handle_light(event, $RightArea/PointLight2D, monsters_in_right)
+		player_sprite.texture = textures[2]
 
 func _on_left_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		_handle_light(event, $LeftArea/PointLight2D, monsters_in_left)
-
+		player_sprite.texture = textures[1]
 # -------------------------
 # Keyboard input (Q / W / E)
 # -------------------------
@@ -82,11 +98,14 @@ func _input(event):
 		match event.keycode:
 			Key.KEY_Q:
 				_handle_light(event, $LeftArea/PointLight2D, monsters_in_left)
+				player_sprite.texture = textures[1]
 			Key.KEY_W:
 				_handle_light(event, $BlanketArea/PointLight2D, monsters_in_blanket)
+				player_sprite.texture = textures[0]
 			Key.KEY_E:
 				_handle_light(event, $RightArea/PointLight2D, monsters_in_right)
-
+				player_sprite.texture = textures[2]
+				
 # -------------------------
 # Light handler (shared)
 # -------------------------
@@ -108,8 +127,6 @@ func _handle_light(event, light: PointLight2D, monster_array):
 		
 	else:
 		light.visible = false
-
-
 
 # -------------------------
 # Utility
