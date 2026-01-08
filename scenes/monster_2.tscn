@@ -23,4 +23,11 @@ shape = SubResource("RectangleShape2D_g3y7j")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cv6h0")
 
+[node name="JumpscareOverlay" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="JumpscareOverlay"]
+position = Vector2(597, 326)
+scale = Vector2(2, 2)
+texture = ExtResource("2_g3y7j")
+
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]

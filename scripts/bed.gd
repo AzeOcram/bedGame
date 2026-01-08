@@ -1,136 +1,73 @@
 extends Node2D
 
-# -------------------------
-# Monster tracking per area
-# -------------------------
 var monsters_in_blanket := []
 var monsters_in_right := []
 var monsters_in_left := []
 
-# -------------------------
-# Player Sprites
-# -------------------------
 @onready var player_sprite: Sprite2D = $Player
-
 var textures := [
 	preload("res://assets/art/Player/player_look_down_full.png"),
 	preload("res://assets/art/Player/player_look_left.png"),
 	preload("res://assets/art/Player/player_look_right.png")
 ]
 
-# -------------------------
-# Util vars
-# -------------------------
-var blackout_running := false
-@onready var monster1: CharacterBody2D = $"../Monsters/Monster1"
-@onready var progress :=  $"../UI/ProgressBar"
+var light_active := false
 
-
-
-# -------------------------
-# Ready
-# -------------------------
 func _ready() -> void:
-	# Lights OFF by default
-	$BlanketArea/PointLight2D.visible = false
-	$RightArea/PointLight2D.visible = false
-	$LeftArea/PointLight2D.visible = false
+	_turn_off_all_lights()
+	# Connect signals
+	$BlanketArea.body_entered.connect(func(b): if b.is_in_group("monsters"): monsters_in_blanket.append(b))
+	$BlanketArea.body_exited.connect(func(b): if b.is_in_group("monsters"): monsters_in_blanket.erase(b))
+	$RightArea.body_entered.connect(func(b): if b.is_in_group("monsters"): monsters_in_right.append(b))
+	$RightArea.body_exited.connect(func(b): if b.is_in_group("monsters"): monsters_in_right.erase(b))
+	$LeftArea.body_entered.connect(func(b): if b.is_in_group("monsters"): monsters_in_left.append(b))
+	$LeftArea.body_exited.connect(func(b): if b.is_in_group("monsters"): monsters_in_left.erase(b))
 
-	# Connect area signals
-	$BlanketArea.body_entered.connect(_on_blanket_body_entered)
-	$BlanketArea.body_exited.connect(_on_blanket_body_exited)
-
-	$RightArea.body_entered.connect(_on_right_body_entered)
-	$RightArea.body_exited.connect(_on_right_body_exited)
-
-	$LeftArea.body_entered.connect(_on_left_body_entered)
-	$LeftArea.body_exited.connect(_on_left_body_exited)
-
-# -------------------------
-# Area body tracking
-# -------------------------
-func _on_blanket_body_entered(body):
-	if body.is_in_group("monsters"):
-		monsters_in_blanket.append(body)
-
-func _on_blanket_body_exited(body):
-	if body.is_in_group("monsters"):
-		monsters_in_blanket.erase(body)
-
-func _on_right_body_entered(body):
-	if body.is_in_group("monsters"):
-		monsters_in_right.append(body)
-
-func _on_right_body_exited(body):
-	if body.is_in_group("monsters"):
-		monsters_in_right.erase(body)
-
-func _on_left_body_entered(body):
-	if body.is_in_group("monsters"):
-		monsters_in_left.append(body)
-
-func _on_left_body_exited(body):
-	if body.is_in_group("monsters"):
-		monsters_in_left.erase(body)
-
-# -------------------------
-# Mouse input (hold to light)
-# -------------------------
-func _on_blanket_area_input_event(viewport, event, shape_idx):
+# Mouse Input
+func _on_blanket_area_input_event(_v, event, _s):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		_handle_light(event, $BlanketArea/PointLight2D, monsters_in_blanket)
-		player_sprite.texture = textures[0]
+		_handle_light_logic(event.pressed, $BlanketArea/PointLight2D, monsters_in_blanket, 0)
 
-func _on_right_area_input_event(viewport, event, shape_idx):
+func _on_right_area_input_event(_v, event, _s):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		_handle_light(event, $RightArea/PointLight2D, monsters_in_right)
-		player_sprite.texture = textures[2]
+		_handle_light_logic(event.pressed, $RightArea/PointLight2D, monsters_in_right, 2)
 
-func _on_left_area_input_event(viewport, event, shape_idx):
+func _on_left_area_input_event(_v, event, _s):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		_handle_light(event, $LeftArea/PointLight2D, monsters_in_left)
-		player_sprite.texture = textures[1]
-# -------------------------
-# Keyboard input (Q / W / E)
-# -------------------------
+		_handle_light_logic(event.pressed, $LeftArea/PointLight2D, monsters_in_left, 1)
+
+# Keyboard Input
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventKey and not event.echo:
 		match event.keycode:
-			Key.KEY_Q:
-				_handle_light(event, $LeftArea/PointLight2D, monsters_in_left)
-				player_sprite.texture = textures[1]
-			Key.KEY_W:
-				_handle_light(event, $BlanketArea/PointLight2D, monsters_in_blanket)
-				player_sprite.texture = textures[0]
-			Key.KEY_E:
-				_handle_light(event, $RightArea/PointLight2D, monsters_in_right)
-				player_sprite.texture = textures[2]
-				
-# -------------------------
-# Light handler (shared)
-# -------------------------
-func _handle_light(event, light: PointLight2D, monster_array):
-	if event.pressed:
-		_turn_off_all_lights()
-		light.visible = true
-		
-		if monster_array.size() > 0 and monster_array[0] != monster1:
-			$AudioStreamPlayer.play()
-			await get_tree().create_timer(0.2).timeout
-			light.visible = false
-			
-			for monster in monster_array: 
-				if is_instance_valid(monster): 
-					monster.reset_state()
-			await get_tree().create_timer(0.3).timeout
-			light.visible = true
-		
-	else:
-		light.visible = false
+			Key.KEY_Q: _handle_light_logic(event.pressed, $LeftArea/PointLight2D, monsters_in_left, 1)
+			Key.KEY_W: _handle_light_logic(event.pressed, $BlanketArea/PointLight2D, monsters_in_blanket, 0)
+			Key.KEY_E: _handle_light_logic(event.pressed, $RightArea/PointLight2D, monsters_in_right, 2)
 
-# -------------------------
-# Utility
-# -------------------------
+func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array: Array, tex_idx: int):
+	light_active = pressed
+	_turn_off_all_lights() # Reset visual state
+	
+	var ui = get_node_or_null("../UI")
+	
+	if light_active:
+		light_node.visible = true
+		player_sprite.visible = true
+		player_sprite.texture = textures[tex_idx]
+		if ui: ui.set_drain_rate(true)
+		
+		# Wait 0.2s, then check IF the light is still active before suppressing
+		await get_tree().create_timer(0.2).timeout
+		if light_active: 
+			for monster in monster_array:
+				if is_instance_valid(monster) and monster.has_method("suppress_with_light"):
+					monster.suppress_with_light()
+	else:
+		player_sprite.visible = false
+		if ui: ui.set_drain_rate(false)
+		# Safety: Release ALL monsters in the game from suppression when light is released
+		get_tree().call_group("monsters", "release_from_light")
+
 func _turn_off_all_lights():
 	$BlanketArea/PointLight2D.visible = false
 	$RightArea/PointLight2D.visible = false

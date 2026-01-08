@@ -28,13 +28,23 @@ offset_bottom = 488.0
 theme_override_font_sizes/font_size = 45
 text = "Back to Menu"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 319.0
-offset_top = 205.0
-offset_right = 869.0
-offset_bottom = 337.0
+[node name="Title" type="Label" parent="."]
+offset_left = 321.0
+offset_top = 160.0
+offset_right = 871.0
+offset_bottom = 292.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "GAME OVER"
+
+[node name="Message" type="Label" parent="."]
+offset_left = 322.0
+offset_top = 279.0
+offset_right = 865.0
+offset_bottom = 338.0
+theme_override_font_sizes/font_size = 40
+text = "NA"
+horizontal_alignment = 1
+vertical_alignment = 1
