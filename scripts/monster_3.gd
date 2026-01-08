@@ -1,74 +1,97 @@
 extends CharacterBody2D
-#Attributes
+
 enum Difficulty { EASY, MEDIUM, HARD }
 @export var difficulty: Difficulty = Difficulty.HARD
-@onready var sprite = $Sprite2D
+
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
-@onready var jumpscare_overlay = $JumpscareOverlay
+@onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
 @onready var positions = [
-	$"../PositionG",
-	$"../PositionH",
-	$"../PositionI",
-	$"../JumpscarePos",
+	$"../PositionG", $"../PositionB", $"../PositionC",
+	$"../PositionD", $"../PositionE", $"../PositionF",
+	$"../PositionH", $"../PositionI", $"../JumpscarePos",
 ]
+
 var current_index := 0
+var currentTime := 0
+var timeToJumpscare := 0
+var suppressed_by_light := false
 
 func _ready():
-	add_to_group("monsters")  # Make sure this is here!
-	for i in positions:
-		print(i)
+	add_to_group("monsters")
 	randomize()
 	current_index = 0
-	# Move the entire CharacterBody2D, not just the sprite
 	global_position = positions[current_index].global_position
+	jumpscare_overlay.visible = false
+	timeToJumpscare = get_random_jumpscareTime()
 	start_timer()
 
 func get_random_delay() -> float:
 	match difficulty:
-		Difficulty.EASY:
-			return randf_range(40.0, 60.0)
-		Difficulty.MEDIUM:
-			return randf_range(20.0, 40.0)
-		Difficulty.HARD:
-			return randf_range(1.0, 5.0)
-		_:
-			return 40.0
+		Difficulty.EASY: return randf_range(10.0, 15.0)
+		Difficulty.MEDIUM: return randf_range(5.0, 10.0)
+		Difficulty.HARD: return randf_range(2.0, 4.0)
+		_: return 10.0
+
+func get_random_jumpscareTime() -> int:
+	match difficulty:
+		Difficulty.EASY: return randi_range(15, 20)
+		Difficulty.MEDIUM: return randi_range(10, 14)
+		Difficulty.HARD: return randi_range(6, 9)
+		_: return 10
 
 func start_timer():
 	timer.start(get_random_delay())
 
 func _on_TeleportTimer_timeout():
-	current_index += 1
-	if current_index >= positions.size():
-		current_index = 0
-	# Move the entire CharacterBody2D, not just the sprite
+	currentTime += 1
+	if currentTime >= timeToJumpscare:
+		current_index = positions.size() - 1 
+		global_position = positions[current_index].global_position
+		jumpscare()
+		return
+
+	current_index = randi_range(0, positions.size() - 2)
 	global_position = positions[current_index].global_position
 	start_timer()
 
-func reset_state(): #resets position 
+func suppress_with_light():
+	if current_index == 0:
+		# Behavior: Freeze at Start
+		suppressed_by_light = true
+		timer.stop() 
+	else:
+		# Behavior: Scared away to a different spot immediately
+		var last_index = current_index
+		while current_index == last_index:
+			current_index = randi_range(0, positions.size() - 2)
+		global_position = positions[current_index].global_position
+		
+		# RESET: New position, new delay
+		start_timer()
+
+func release_from_light():
+	if suppressed_by_light:
+		suppressed_by_light = false
+		# RESET: Restart the delay for the first position
+		start_timer()
+
+func reset_state(): 
+	currentTime = int(max(0, currentTime - 2)) 
 	current_index = 0
 	global_position = positions[current_index].global_position
 	start_timer() 
 
 func jumpscare() -> void:
-	# Show overlay and play sound
+	timer.stop()
 	jumpscare_overlay.visible = true
 	jumpscare_sound.play()
-	
-	# Wait a moment before shaking (build tension)
 	await get_tree().create_timer(0.3).timeout
-	
-	# Shake effect on overlay (longer and more intense)
 	var original_pos = jumpscare_overlay.position
-	for i in range(20):  # More shakes (was 5)
+	for i in range(20):
 		jumpscare_overlay.position = original_pos + Vector2(randi() % 30 - 15, randi() % 30 - 15)
-		await get_tree().create_timer(0.08).timeout  # Slower shake (was 0.05)
-	
-	# Hold the jumpscare image still for a moment
+		await get_tree().create_timer(0.08).timeout
 	jumpscare_overlay.position = original_pos
-	await get_tree().create_timer(1.0).timeout  # Hold for 1 second
-	
-	# Reset overlay
+	await get_tree().create_timer(1.0).timeout
 	jumpscare_overlay.visible = false
 	reset_state()

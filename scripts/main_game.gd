@@ -1,19 +1,24 @@
 extends Node2D
-
 @onready var ui = $UI
-@onready var game_over_screen = $GameOver  # Add the GameOver scene as a child
+@onready var game_over_screen = $GameOver
 var jumpscare_running := false
 var elapsed_time = 0
+@onready var monster1 = $Monsters/Monster1
+var game_ended := false
 
 func _ready() -> void:
-	ui.startProgressBar(1.0)
+	ui.startProgressBar()
 	ui.startTimer(100)
+	
+	# Connect to UI signals for win/lose conditions
+	ui.progress_complete.connect(_on_progress_complete)
+	ui.timer_complete.connect(_on_timer_complete)
 
 func _process(delta: float) -> void:
+	if game_ended:
+		return
+		
 	elapsed_time += delta
-	if elapsed_time > 5:
-		ui.decreaseProgress(2)
-		elapsed_time = 0
 	
 	# Jumpscare check
 	var jumpscare_pos = $Monsters/JumpscarePos
@@ -23,10 +28,31 @@ func _process(delta: float) -> void:
 				if not jumpscare_running:
 					jumpscare_running = true
 					await monster.jumpscare()
-					trigger_game_over()  # Game over after jumpscare!
+					if monster == monster1:
+						trigger_losing_condition("jumpscare")
 					jumpscare_running = false
 				break
 
-func trigger_game_over():
+func _on_progress_complete():
+	# Progress bar reached 100 - Player WINS
+	trigger_winning_condition()
+
+func _on_timer_complete():
+	# Timer reached end without winning - Player LOSES
+	trigger_losing_condition("timeout")
+
+func trigger_winning_condition():
+	if game_ended:
+		return
+	game_ended = true
+	
 	if game_over_screen:
-		game_over_screen.show_game_over()
+		game_over_screen.show_game_over(true)  # Pass true for win
+
+func trigger_losing_condition(reason: String):
+	if game_ended:
+		return
+	game_ended = true
+	
+	if game_over_screen:
+		game_over_screen.show_game_over(false, reason)  # Pass false for loss + reason

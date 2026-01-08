@@ -19,7 +19,7 @@ fill_from = Vector2(0.51914895, 0.4787234)
 fill_to = Vector2(0.906383, 0.095744684)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_raxto"]
-size = Vector2(356, 197)
+size = Vector2(370, 329)
 
 [sub_resource type="Gradient" id="Gradient_x7btf"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -31,7 +31,7 @@ fill_from = Vector2(0.50212765, 0.5)
 fill_to = Vector2(0.8638298, 0.09148936)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_853xm"]
-size = Vector2(345, 207)
+size = Vector2(351, 326)
 
 [sub_resource type="Gradient" id="Gradient_exsg2"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -74,24 +74,24 @@ texture = SubResource("GradientTexture2D_x7btf")
 [node name="RightArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(350, 169.5)
+position = Vector2(343, 103.5)
 shape = SubResource("RectangleShape2D_raxto")
 
 [node name="PointLight2D" type="PointLight2D" parent="RightArea"]
-position = Vector2(210, 31)
-scale = Vector2(6.2187495, 5.632812)
+position = Vector2(227, 25)
+scale = Vector2(7.6874995, 6.738281)
 color = Color(1, 0.9647059, 0.8, 1)
 texture = SubResource("GradientTexture2D_exsg2")
 
 [node name="LeftArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(-342.5, 159.5)
+position = Vector2(-339.5, 100)
 shape = SubResource("RectangleShape2D_853xm")
 
 [node name="PointLight2D" type="PointLight2D" parent="LeftArea"]
-position = Vector2(-210, 31)
-scale = Vector2(6.219, 5.633)
+position = Vector2(-230.99998, 22.999998)
+scale = Vector2(7.0782495, 6.5665007)
 color = Color(1, 0.9647059, 0.8, 1)
 texture = SubResource("GradientTexture2D_pqek7")
 
