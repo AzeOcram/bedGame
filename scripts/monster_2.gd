@@ -13,6 +13,8 @@ enum Difficulty { EASY, MEDIUM, HARD }
 	$"../JumpscarePos",
 ]
 
+@onready var progress_bar = $"../../UI"
+
 var current_index := 0
 var suppressed_by_light := false
 
@@ -64,6 +66,7 @@ func reset_state():
 
 func jumpscare() -> void:
 	timer.stop()
+	progress_bar.decreaseProgress(30)
 	jumpscare_overlay.visible = true
 	jumpscare_sound.play()
 	await get_tree().create_timer(0.3).timeout

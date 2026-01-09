@@ -54,6 +54,11 @@ func increaseProgress(amount: float) -> void:
 	progressBar.value += amount
 	if progressBar.value > progressBar.max_value:
 		progressBar.value = progressBar.max_value
+		
+func decreaseProgress(amount: float) -> void:
+	progressBar.value -= amount
+	if progressBar.value < progressBar.min_value:
+		progressBar.value = 0
 
 func startProgressBar() -> void:
 	if progress_running:
@@ -83,6 +88,8 @@ func startProgressBar() -> void:
 # Function to set fill rate based on flashlight state
 func set_drain_rate(light_on: bool) -> void:
 	if light_on:
-		current_drain_rate = 0.01  # Slower fill: 1% per second when light is ON
+		#current_drain_rate = 0.01  # Slower fill: 1% per second when light is ON
+		current_drain_rate = 0.7
 	else:
-		current_drain_rate = 0.05  # Faster fill: 2% per second when light is OFF
+		#current_drain_rate = 0.05  # Faster fill: 2% per second when light is OFF
+		current_drain_rate = 2.0
