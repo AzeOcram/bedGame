@@ -36,6 +36,7 @@ color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 position = Vector2(619, 364)
 
 [node name="Monster2" parent="Monsters" instance=ExtResource("4_ygxny")]
+difficulty = null
 
 [node name="Monster3" parent="Monsters" instance=ExtResource("6_wi4c7")]
 

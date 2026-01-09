@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-enum Difficulty { EASY, MEDIUM, HARD }
-@export var difficulty: Difficulty = Difficulty.HARD
-
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
 @onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
@@ -25,14 +22,16 @@ func _ready():
 	global_position = positions[current_index].global_position
 	jumpscare_overlay.visible = false
 	start_timer()
+	print("Monster 2 difficulty is: ") 
+	print(Global.difficulty)
 
 func get_random_delay() -> float:
-	match difficulty:
-		Difficulty.EASY: return randf_range(15.0, 25.0)
-		Difficulty.MEDIUM: return randf_range(8.0, 15.0)
-		Difficulty.HARD: return randf_range(3.0, 6.0)
+	match Global.difficulty:
+		Global.Difficulty.EASY: return randf_range(15.0, 25.0)
+		Global.Difficulty.MEDIUM: return randf_range(8.0, 15.0)
+		Global.Difficulty.HARD: return randf_range(3.0, 6.0)
 		_: return 15.0
-
+	
 func start_timer():
 	timer.start(get_random_delay())
 

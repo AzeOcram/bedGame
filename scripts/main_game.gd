@@ -3,7 +3,10 @@ extends Node2D
 @onready var game_over_screen = $GameOver
 var jumpscare_running := false
 var elapsed_time = 0
+
 @onready var monster1 = $Monsters/Monster1
+@onready var monster2 = $Monsters/Monster2
+@onready var monster3 = $Monsters/Monster3
 var game_ended := false
 
 func _ready() -> void:
@@ -32,7 +35,12 @@ func _process(delta: float) -> void:
 						trigger_losing_condition("jumpscare")
 					jumpscare_running = false
 				break
-
+				
+func setMonsterDifficulty():
+	monster1.setDifficulty(Global.difficulty)
+	monster2.setDifficulty(Global.difficulty)
+	monster3.setDifficulty(Global.difficulty)
+	
 func _on_progress_complete():
 	# Progress bar reached 100 - Player WINS
 	trigger_winning_condition()
