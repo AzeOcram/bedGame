@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgefvl6fcyqno"]
+[gd_scene load_steps=6 format=3 uid="uid://bgefvl6fcyqno"]
 
-[ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="1_652hl"]
 [ext_resource type="Script" uid="uid://grki8hibps4u" path="res://scripts/monster_3.gd" id="1_mxkcy"]
+[ext_resource type="Texture2D" uid="uid://cbotgj8d8a0bh" path="res://assets/art/monster/monster_bunny_normal.png" id="2_lcaqc"]
 [ext_resource type="AudioStream" uid="uid://o4ritpghlmda" path="res://assets/sounds/Jumpscare.mp3" id="3_04lg0"]
+[ext_resource type="Texture2D" uid="uid://b3c3wyhuwxdxv" path="res://assets/art/monster/monster_bunny_jumpscare.png" id="4_lcaqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxkcy"]
 size = Vector2(64, 64)
@@ -11,8 +12,8 @@ size = Vector2(64, 64)
 script = ExtResource("1_mxkcy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_652hl")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_lcaqc")
 
 [node name="TeleportTimer" type="Timer" parent="."]
 
@@ -25,8 +26,8 @@ stream = ExtResource("3_04lg0")
 [node name="JumpscareOverlay" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="JumpscareOverlay"]
-position = Vector2(594, 299)
-scale = Vector2(2, 2)
-texture = ExtResource("1_652hl")
+position = Vector2(584, 399)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_lcaqc")
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]

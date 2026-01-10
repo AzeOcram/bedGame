@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5vibojjp0jvk"
-path="res://.godot/imported/Bed.png-8ae7ff2a369d9d1b1d4dc49fddb052f3.ctex"
+uid="uid://cjr6tmoaixn0p"
+path="res://.godot/imported/monster_bear_jumpscare.png-c61716cbbb7d33dfe19e9f7d6238f23e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Bed.png"
-dest_files=["res://.godot/imported/Bed.png-8ae7ff2a369d9d1b1d4dc49fddb052f3.ctex"]
+source_file="res://assets/art/monster/monster_bear_jumpscare.png"
+dest_files=["res://.godot/imported/monster_bear_jumpscare.png-c61716cbbb7d33dfe19e9f7d6238f23e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmx6xucxq4esm"
-path="res://.godot/imported/player_look_left.png-2cbd40ae00e9890ae222dce3f35d8acb.ctex"
+uid="uid://cbotgj8d8a0bh"
+path="res://.godot/imported/monster_bunny_normal.png-bf129315f58f00729ac700430b32e51b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Player/player_look_left.png"
-dest_files=["res://.godot/imported/player_look_left.png-2cbd40ae00e9890ae222dce3f35d8acb.ctex"]
+source_file="res://assets/art/monster/monster_bunny_normal.png"
+dest_files=["res://.godot/imported/monster_bunny_normal.png-bf129315f58f00729ac700430b32e51b.ctex"]
 
 [params]
 

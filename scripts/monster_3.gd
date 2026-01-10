@@ -38,9 +38,9 @@ func get_random_delay() -> float:
 
 func get_random_jumpscareTime() -> int:
 	match Global.difficulty:
-		Global.Difficulty.EASY: return randi_range(15, 20)
-		Global.Difficulty.MEDIUM: return randi_range(10, 14)
-		Global.Difficulty.HARD: return randi_range(6, 9)
+		Global.Difficulty.EASY: return randi_range(10, 14)
+		Global.Difficulty.MEDIUM: return randi_range(6, 9)
+		Global.Difficulty.HARD: return randi_range(3, 5)
 		_: return 10
 
 func start_timer():
@@ -98,3 +98,4 @@ func jumpscare() -> void:
 	await get_tree().create_timer(1.0).timeout
 	jumpscare_overlay.visible = false
 	reset_state()
+	$"../../Bed".turn_off_flashlight()

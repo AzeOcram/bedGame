@@ -4,17 +4,24 @@ var monsters_in_blanket := []
 var monsters_in_right := []
 var monsters_in_left := []
 
-@onready var player_sprite: Sprite2D = $Player
+@onready var player_sprite1: Sprite2D = $PlayerDown
+@onready var player_sprite2: Sprite2D = $PlayerSide
+@onready var lampRight := $Lamp1
+@onready var lampLeft := $Lamp2
+
 var textures := [
 	preload("res://assets/art/Player/player_look_down_full.png"),
 	preload("res://assets/art/Player/player_look_left.png"),
 	preload("res://assets/art/Player/player_look_right.png")
 ]
-
+var bedNormal := preload("res://assets/art/environment/Bed.png")
+var bedCovered := preload("res://assets/art/environment/bed_covered.png")
 var light_active := false
+var flashlight_working := true
 
 func _ready() -> void:
 	_turn_off_all_lights()
+	$BedSprite.texture = bedCovered
 	# Connect signals
 	$BlanketArea.body_entered.connect(func(b): if b.is_in_group("monsters"): monsters_in_blanket.append(b))
 	$BlanketArea.body_exited.connect(func(b): if b.is_in_group("monsters"): monsters_in_blanket.erase(b))
@@ -50,10 +57,11 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 	
 	var ui = get_node_or_null("../UI")
 	
-	if light_active:
+	if light_active and flashlight_working:
 		light_node.visible = true
-		player_sprite.visible = true
-		player_sprite.texture = textures[tex_idx]
+		handle_player_sprite(tex_idx)
+		handle_lamp_sprite(tex_idx)
+		$BedSprite.texture = bedNormal
 		if ui: ui.set_drain_rate(true)
 		
 		# Wait 0.2s, then check IF the light is still active before suppressing
@@ -63,10 +71,35 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 				if is_instance_valid(monster) and monster.has_method("suppress_with_light"):
 					monster.suppress_with_light()
 	else:
-		player_sprite.visible = false
+		$BedSprite.texture = bedCovered
+		lampLeft.texture = preload("res://assets/art/environment/Lamp_off.png")
+		lampRight.texture = preload("res://assets/art/environment/Lamp_off.png")
+		player_sprite1.visible = false
+		player_sprite2.visible = false
 		if ui: ui.set_drain_rate(false)
 		# Safety: Release ALL monsters in the game from suppression when light is released
 		get_tree().call_group("monsters", "release_from_light")
+
+func handle_player_sprite(tex_idx: int):
+	if tex_idx == 0:
+		player_sprite1.visible = true
+		player_sprite2.visible = false
+		player_sprite1.texture = textures[tex_idx]
+	else:
+		player_sprite1.visible = false
+		player_sprite2.visible = true
+		player_sprite2.texture = textures[tex_idx]
+
+func handle_lamp_sprite(tex_idx : int):
+	if tex_idx == 1:
+		lampLeft.texture = preload("res://assets/art/environment/Lamp_On.png")
+	elif tex_idx == 2:
+		lampRight.texture = preload("res://assets/art/environment/Lamp_On.png")
+
+func turn_off_flashlight():
+	flashlight_working = false
+	await get_tree().create_timer(3).timeout
+	flashlight_working = true
 
 func _turn_off_all_lights():
 	$BlanketArea/PointLight2D.visible = false

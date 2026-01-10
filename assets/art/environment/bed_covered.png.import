@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6arm7uh087mx"
-path="res://.godot/imported/Background.png-3c053efe278ec665cc10a00fc35a076c.ctex"
+uid="uid://bw6hhwmooggs2"
+path="res://.godot/imported/bed_covered.png-c33981ae6479f84395e68778fb5f00d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Background.png"
-dest_files=["res://.godot/imported/Background.png-3c053efe278ec665cc10a00fc35a076c.ctex"]
+source_file="res://assets/art/environment/bed_covered.png"
+dest_files=["res://.godot/imported/bed_covered.png-c33981ae6479f84395e68778fb5f00d4.ctex"]
 
 [params]
 

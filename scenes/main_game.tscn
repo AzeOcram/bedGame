@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dgdk4qyr826dt"]
 
 [ext_resource type="Script" uid="uid://ck7vkh4h4ijf2" path="res://scripts/main_game.gd" id="1_72e8q"]
-[ext_resource type="Texture2D" uid="uid://6arm7uh087mx" path="res://assets/art/Background.png" id="2_wi4c7"]
+[ext_resource type="Texture2D" uid="uid://6arm7uh087mx" path="res://assets/art/environment/Background.png" id="2_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://mgirxni3b3s2" path="res://scenes/ui.tscn" id="2_ygxny"]
 [ext_resource type="PackedScene" uid="uid://08ncmc5vqihx" path="res://scenes/monster_1.tscn" id="3_d2op2"]
 [ext_resource type="PackedScene" uid="uid://dehgwglsaf0e" path="res://scenes/bed.tscn" id="4_0rdsr"]
@@ -36,7 +36,6 @@ color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 position = Vector2(619, 364)
 
 [node name="Monster2" parent="Monsters" instance=ExtResource("4_ygxny")]
-difficulty = null
 
 [node name="Monster3" parent="Monsters" instance=ExtResource("6_wi4c7")]
 
@@ -55,7 +54,7 @@ position = Vector2(612, 470)
 position = Vector2(610, 371)
 
 [node name="PositionD" type="Marker2D" parent="Monsters"]
-position = Vector2(819, 236)
+position = Vector2(843, 224)
 
 [node name="PositionE" type="Marker2D" parent="Monsters"]
 position = Vector2(992, 383)
@@ -64,7 +63,7 @@ position = Vector2(992, 383)
 position = Vector2(772, 384)
 
 [node name="PositionG" type="Marker2D" parent="Monsters"]
-position = Vector2(403, 227)
+position = Vector2(350, 225)
 
 [node name="PositionH" type="Marker2D" parent="Monsters"]
 position = Vector2(272, 419)
