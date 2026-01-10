@@ -6,6 +6,9 @@ var monsters_in_left := []
 
 @onready var player_sprite1: Sprite2D = $PlayerDown
 @onready var player_sprite2: Sprite2D = $PlayerSide
+@onready var lampRight := $Lamp1
+@onready var lampLeft := $Lamp2
+
 var textures := [
 	preload("res://assets/art/Player/player_look_down_full.png"),
 	preload("res://assets/art/Player/player_look_left.png"),
@@ -57,6 +60,7 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 	if light_active and flashlight_working:
 		light_node.visible = true
 		handle_player_sprite(tex_idx)
+		handle_lamp_sprite(tex_idx)
 		$BedSprite.texture = bedNormal
 		if ui: ui.set_drain_rate(true)
 		
@@ -68,6 +72,8 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 					monster.suppress_with_light()
 	else:
 		$BedSprite.texture = bedCovered
+		lampLeft.texture = preload("res://assets/art/environment/Lamp_off.png")
+		lampRight.texture = preload("res://assets/art/environment/Lamp_off.png")
 		player_sprite1.visible = false
 		player_sprite2.visible = false
 		if ui: ui.set_drain_rate(false)
@@ -83,6 +89,12 @@ func handle_player_sprite(tex_idx: int):
 		player_sprite1.visible = false
 		player_sprite2.visible = true
 		player_sprite2.texture = textures[tex_idx]
+
+func handle_lamp_sprite(tex_idx : int):
+	if tex_idx == 1:
+		lampLeft.texture = preload("res://assets/art/environment/Lamp_On.png")
+	elif tex_idx == 2:
+		lampRight.texture = preload("res://assets/art/environment/Lamp_On.png")
 
 func turn_off_flashlight():
 	flashlight_working = false

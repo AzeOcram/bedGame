@@ -54,7 +54,7 @@ position = Vector2(612, 470)
 position = Vector2(610, 371)
 
 [node name="PositionD" type="Marker2D" parent="Monsters"]
-position = Vector2(819, 236)
+position = Vector2(843, 224)
 
 [node name="PositionE" type="Marker2D" parent="Monsters"]
 position = Vector2(992, 383)
@@ -63,7 +63,7 @@ position = Vector2(992, 383)
 position = Vector2(772, 384)
 
 [node name="PositionG" type="Marker2D" parent="Monsters"]
-position = Vector2(403, 227)
+position = Vector2(350, 225)
 
 [node name="PositionH" type="Marker2D" parent="Monsters"]
 position = Vector2(272, 419)

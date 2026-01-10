@@ -12,7 +12,7 @@ size = Vector2(61, 62)
 script = ExtResource("1_727yn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.09, 0.09)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_2m7rl")
 
 [node name="TeleportTimer" type="Timer" parent="."]
