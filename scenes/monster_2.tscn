@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uecujd70na7j"]
+[gd_scene load_steps=6 format=3 uid="uid://uecujd70na7j"]
 
 [ext_resource type="Script" uid="uid://d114it2olww4g" path="res://scripts/monster_2.gd" id="1_727yn"]
-[ext_resource type="Texture2D" uid="uid://ducbas2whjef2" path="res://icon.svg" id="2_g3y7j"]
+[ext_resource type="Texture2D" uid="uid://dolwdyitjyhxg" path="res://assets/art/monster/monster_bear_normal.png" id="2_2m7rl"]
 [ext_resource type="AudioStream" uid="uid://o4ritpghlmda" path="res://assets/sounds/Jumpscare.mp3" id="3_cv6h0"]
+[ext_resource type="Texture2D" uid="uid://cjr6tmoaixn0p" path="res://assets/art/monster/monster_bear_jumpscare.png" id="4_2m7rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3y7j"]
 size = Vector2(61, 62)
@@ -11,8 +12,8 @@ size = Vector2(61, 62)
 script = ExtResource("1_727yn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_g3y7j")
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_2m7rl")
 
 [node name="TeleportTimer" type="Timer" parent="."]
 
@@ -27,7 +28,7 @@ stream = ExtResource("3_cv6h0")
 
 [node name="Sprite2D" type="Sprite2D" parent="JumpscareOverlay"]
 position = Vector2(597, 326)
-scale = Vector2(2, 2)
-texture = ExtResource("2_g3y7j")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_2m7rl")
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]
