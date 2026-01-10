@@ -14,6 +14,7 @@ var textures := [
 var bedNormal := preload("res://assets/art/environment/Bed.png")
 var bedCovered := preload("res://assets/art/environment/bed_covered.png")
 var light_active := false
+var flashlight_working := true
 
 func _ready() -> void:
 	_turn_off_all_lights()
@@ -53,7 +54,7 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 	
 	var ui = get_node_or_null("../UI")
 	
-	if light_active:
+	if light_active and flashlight_working:
 		light_node.visible = true
 		handle_player_sprite(tex_idx)
 		$BedSprite.texture = bedNormal
@@ -82,6 +83,11 @@ func handle_player_sprite(tex_idx: int):
 		player_sprite1.visible = false
 		player_sprite2.visible = true
 		player_sprite2.texture = textures[tex_idx]
+
+func turn_off_flashlight():
+	flashlight_working = false
+	await get_tree().create_timer(3).timeout
+	flashlight_working = true
 
 func _turn_off_all_lights():
 	$BlanketArea/PointLight2D.visible = false
