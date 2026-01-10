@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmx6xucxq4esm"
-path="res://.godot/imported/player_look_left.png-2cbd40ae00e9890ae222dce3f35d8acb.ctex"
+uid="uid://dolwdyitjyhxg"
+path="res://.godot/imported/monster_bear_normal.png-4327cec2a623145a6fe20fa2a0ec74b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Player/player_look_left.png"
-dest_files=["res://.godot/imported/player_look_left.png-2cbd40ae00e9890ae222dce3f35d8acb.ctex"]
+source_file="res://assets/art/monster/monster_bear_normal.png"
+dest_files=["res://.godot/imported/monster_bear_normal.png-4327cec2a623145a6fe20fa2a0ec74b1.ctex"]
 
 [params]
 

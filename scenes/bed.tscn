@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dehgwglsaf0e"]
+[gd_scene load_steps=18 format=3 uid="uid://dehgwglsaf0e"]
 
 [ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
-[ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/Bed.png" id="2_fqty4"]
-[ext_resource type="Texture2D" uid="uid://bcffm7r3moo6s" path="res://assets/art/Shelf.png" id="3_raxto"]
+[ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/environment/Bed.png" id="2_fqty4"]
+[ext_resource type="Texture2D" uid="uid://bcffm7r3moo6s" path="res://assets/art/environment/Shelf.png" id="3_raxto"]
 [ext_resource type="AudioStream" uid="uid://dn5iu7x7u64d3" path="res://assets/sounds/Suspense FX short.mp3" id="4_853xm"]
+[ext_resource type="Texture2D" uid="uid://ci2fbgnnl3cc2" path="res://assets/art/Player/player_look_right.png" id="5_exsg2"]
+[ext_resource type="Texture2D" uid="uid://cp4gaxdule4ps" path="res://assets/art/Player/player_look_down_full.png" id="5_x7btf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
 size = Vector2(300.25, 247)
@@ -54,7 +56,7 @@ fill_to = Vector2(0.8425532, 0.17234042)
 [node name="Bed" type="Node2D"]
 script = ExtResource("1_fqty4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BedSprite" type="Sprite2D" parent="."]
 position = Vector2(-3.500008, 125)
 scale = Vector2(0.25397375, 0.295)
 texture = ExtResource("2_fqty4")
@@ -119,8 +121,15 @@ texture = SubResource("GradientTexture2D_853xm")
 stream = ExtResource("4_853xm")
 volume_db = -10.0
 
-[node name="Player" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+[node name="PlayerSide" type="Sprite2D" parent="."]
+position = Vector2(0, -26.000002)
+scale = Vector2(0.098081894, 0.09472444)
+texture = ExtResource("5_exsg2")
+
+[node name="PlayerDown" type="Sprite2D" parent="."]
+position = Vector2(1, -12.999999)
+scale = Vector2(0.11540448, 0.119512126)
+texture = ExtResource("5_x7btf")
 
 [connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
 [connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]

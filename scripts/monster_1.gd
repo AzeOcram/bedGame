@@ -63,7 +63,7 @@ func reset_state():
 	start_timer()
 
 func jumpscare() -> void:
-	timer.stop()
+	timer.stop() 
 	jumpscare_overlay.visible = true
 	jumpscare_sound.play()
 	await get_tree().create_timer(0.3).timeout
