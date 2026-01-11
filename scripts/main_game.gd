@@ -30,9 +30,11 @@ func _process(delta: float) -> void:
 			if monster.global_position.distance_to(jumpscare_pos.global_position) < 1.0:
 				if not jumpscare_running:
 					jumpscare_running = true
+					ui.progress_running = false
 					await monster.jumpscare()
 					if monster == monster1:
 						trigger_losing_condition("jumpscare")
+					ui.progress_running = true
 					jumpscare_running = false
 				break
 				
