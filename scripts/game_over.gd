@@ -24,8 +24,10 @@ func show_game_over(won: bool = false, reason: String = ""):
 			title_label.add_theme_color_override("font_color", Color(0.0, 1.0, 0.0))  # Bright green
 		if message_label:
 			message_label.text = "You successfully slept"
-			message_label.add_theme_color_override("font_color", Color(0.6, 1.0, 0.6))  # Light green
+			message_label.add_theme_color_override("font_color", Color(0.6, 1.0, 0.6))  # Light greenn
+			$Win.play()
 	else:
+		$Lose.play()
 		if title_label:
 			title_label.text = "GAME OVER"
 			# Red color for loss
