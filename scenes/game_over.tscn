@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://urr2x77jbapt"]
+[gd_scene load_steps=5 format=3 uid="uid://urr2x77jbapt"]
 
 [ext_resource type="Script" uid="uid://b0he75m4xjqx" path="res://scripts/game_over.gd" id="1_xeevv"]
+[ext_resource type="FontFile" uid="uid://b6qjpm4fpq5c8" path="res://assets/fonts/IBMPlexMono-Medium.ttf" id="2_wqhvx"]
+[ext_resource type="AudioStream" uid="uid://bd251ydh3exl4" path="res://assets/sounds/Winner.mp3" id="3_racf3"]
+[ext_resource type="AudioStream" uid="uid://c6reqmw03gxpo" path="res://assets/sounds/Game Over.mp3" id="4_7m3ot"]
 
 [node name="GameOver" type="CanvasLayer"]
 process_mode = 2
@@ -17,6 +20,7 @@ offset_top = 338.0
 offset_right = 870.0
 offset_bottom = 404.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 45
 text = "Retry"
 
@@ -25,6 +29,7 @@ offset_left = 322.0
 offset_top = 419.0
 offset_right = 872.0
 offset_bottom = 488.0
+theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 45
 text = "Back to Menu"
 
@@ -36,15 +41,26 @@ offset_bottom = 292.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 96
 text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Message" type="Label" parent="."]
 offset_left = 322.0
 offset_top = 279.0
 offset_right = 865.0
 offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 40
 text = "NA"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_racf3")
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7m3ot")

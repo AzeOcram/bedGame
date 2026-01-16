@@ -82,10 +82,12 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 
 func handle_player_sprite(tex_idx: int):
 	if tex_idx == 0:
+		$Flashlight.play()
 		player_sprite1.visible = true
 		player_sprite2.visible = false
 		player_sprite1.texture = textures[tex_idx]
 	else:
+		$Lamp.play()
 		player_sprite1.visible = false
 		player_sprite2.visible = true
 		player_sprite2.texture = textures[tex_idx]
