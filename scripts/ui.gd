@@ -75,6 +75,11 @@ func startProgressBar() -> void:
 			return
 			
 		await get_tree().process_frame
+		
+		#for pausing
+		if not progress_running:
+			continue
+			
 		# Progress increases over time
 		progressBar.value += current_drain_rate * get_process_delta_time()
 		if progressBar.value > progressBar.max_value:
