@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://urr2x77jbapt" path="res://scenes/game_over.tscn" id="10_nqdth"]
 
 [node name="MainGame" type="Node2D"]
-position = Vector2(2, 0)
 script = ExtResource("1_72e8q")
 
 [node name="Map" type="Sprite2D" parent="."]
@@ -23,7 +22,7 @@ texture = ExtResource("2_wi4c7")
 [node name="UI" parent="." instance=ExtResource("2_ygxny")]
 
 [node name="Bed" parent="." instance=ExtResource("4_0rdsr")]
-position = Vector2(606, 248)
+position = Vector2(596, 251)
 
 [node name="DarkFilter" type="Node2D" parent="."]
 

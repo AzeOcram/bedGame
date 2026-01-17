@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dehgwglsaf0e"]
+[gd_scene load_steps=21 format=3 uid="uid://dehgwglsaf0e"]
 
 [ext_resource type="Script" uid="uid://buoet24yfkhcg" path="res://scripts/bed.gd" id="1_fqty4"]
 [ext_resource type="Texture2D" uid="uid://b5vibojjp0jvk" path="res://assets/art/environment/Bed.png" id="2_fqty4"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://def6c75vrvjow" path="res://assets/sounds/Flashlight.mp3" id="5_honl5"]
 [ext_resource type="Texture2D" uid="uid://b1ngce8yi1hv7" path="res://assets/art/environment/Lamp_off.png" id="5_pqek7"]
 [ext_resource type="Texture2D" uid="uid://cp4gaxdule4ps" path="res://assets/art/Player/player_look_down_full.png" id="5_x7btf"]
+[ext_resource type="PackedScene" uid="uid://c2wpetp7x4u8y" path="res://scenes/tutorial_buttons.tscn" id="9_honl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqty4"]
 size = Vector2(300.25, 247)
@@ -144,9 +145,11 @@ scale = Vector2(0.098081894, 0.09472444)
 texture = ExtResource("5_exsg2")
 
 [node name="PlayerDown" type="Sprite2D" parent="."]
-position = Vector2(1, -12.999999)
+position = Vector2(-2, -12.999999)
 scale = Vector2(0.11540448, 0.119512126)
 texture = ExtResource("5_x7btf")
+
+[node name="Tutorial Buttons" parent="." instance=ExtResource("9_honl5")]
 
 [connection signal="input_event" from="BlanketArea" to="." method="_on_blanket_area_input_event"]
 [connection signal="input_event" from="RightArea" to="." method="_on_right_area_input_event"]
