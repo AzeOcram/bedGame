@@ -50,6 +50,9 @@ func _input(event):
 			Key.KEY_Q: _handle_light_logic(event.pressed, $LeftArea/PointLight2D, monsters_in_left, 1)
 			Key.KEY_W: _handle_light_logic(event.pressed, $BlanketArea/PointLight2D, monsters_in_blanket, 0)
 			Key.KEY_E: _handle_light_logic(event.pressed, $RightArea/PointLight2D, monsters_in_right, 2)
+			Key.KEY_LEFT: _handle_light_logic(event.pressed, $LeftArea/PointLight2D, monsters_in_left, 1)
+			Key.KEY_DOWN: _handle_light_logic(event.pressed, $BlanketArea/PointLight2D, monsters_in_blanket, 0)
+			Key.KEY_RIGHT: _handle_light_logic(event.pressed, $RightArea/PointLight2D, monsters_in_right, 2)
 
 func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array: Array, tex_idx: int):
 	light_active = pressed

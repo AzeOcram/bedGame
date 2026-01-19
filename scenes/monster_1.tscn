@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://08ncmc5vqihx"]
+[gd_scene load_steps=7 format=3 uid="uid://08ncmc5vqihx"]
 
 [ext_resource type="Script" uid="uid://dgev70j6lskh7" path="res://scripts/monster_1.gd" id="1_mmj5x"]
 [ext_resource type="Texture2D" uid="uid://cs4ft0vyn1vb6" path="res://assets/art/monster/monster_cat_normal.png" id="2_8chg6"]
 [ext_resource type="AudioStream" uid="uid://o4ritpghlmda" path="res://assets/sounds/Jumpscare.mp3" id="3_8chg6"]
 [ext_resource type="Texture2D" uid="uid://cers2itysshei" path="res://assets/art/monster/monster_cat_inverted.png" id="4_flnva"]
+[ext_resource type="AudioStream" uid="uid://dmfgt0523iqcr" path="res://assets/sounds/scary-transition-401717.mp3" id="5_5jiyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmj5x"]
 size = Vector2(63, 59)
@@ -33,5 +34,9 @@ transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="JumpscareOverlay"]
 position = Vector2(879.99994, 889.99994)
 texture = ExtResource("4_flnva")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5jiyi")
+pitch_scale = 2.26
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]
