@@ -41,6 +41,16 @@ one_shot = true
 stream = ExtResource("2_a320b")
 autoplay = true
 
+[node name="Skip" type="Label" parent="."]
+modulate = Color(0.3141408, 0.3141408, 0.3141408, 1)
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 3.0
+offset_right = 1141.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_0sipp")
+text = "Tap to skip >>"
+
 [connection signal="timeout" from="Delay" to="." method="_on_NextLine_timeout"]
 [connection signal="timeout" from="Typing" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="EndTime" to="." method="_on_End_timeout"]

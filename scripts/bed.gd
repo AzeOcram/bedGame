@@ -55,17 +55,19 @@ func _input(event):
 			Key.KEY_RIGHT: _handle_light_logic(event.pressed, $RightArea/PointLight2D, monsters_in_right, 2)
 
 func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array: Array, tex_idx: int):
-	light_active = pressed
-	_turn_off_all_lights() # Reset visual state
-	
 	var ui = get_node_or_null("../UI")
 	
-	if light_active and flashlight_working:
+	if pressed and flashlight_working:
+		# Turning light ON
+		light_active = true
+		_turn_off_all_lights() # Reset all lights first
 		light_node.visible = true
 		handle_player_sprite(tex_idx)
 		handle_lamp_sprite(tex_idx)
 		$BedSprite.texture = bedNormal
-		if ui: ui.set_drain_rate(true)
+		
+		if ui: 
+			ui.set_drain_rate(true)  # Slower drain when light is ON
 		
 		# Wait 0.2s, then check IF the light is still active before suppressing
 		await get_tree().create_timer(0.2).timeout
@@ -74,13 +76,19 @@ func _handle_light_logic(pressed: bool, light_node: PointLight2D, monster_array:
 				if is_instance_valid(monster) and monster.has_method("suppress_with_light"):
 					monster.suppress_with_light()
 	else:
+		# Turning light OFF (or flashlight broken)
+		light_active = false
+		_turn_off_all_lights()
 		$BedSprite.texture = bedCovered
 		lampLeft.texture = preload("res://assets/art/environment/Lamp_off.png")
 		lampRight.texture = preload("res://assets/art/environment/Lamp_off.png")
 		player_sprite1.visible = false
 		player_sprite2.visible = false
-		if ui: ui.set_drain_rate(false)
-		# Safety: Release ALL monsters in the game from suppression when light is released
+		
+		if ui: 
+			ui.set_drain_rate(false)  # Faster drain when light is OFF
+		
+		# Release ALL monsters from suppression
 		get_tree().call_group("monsters", "release_from_light")
 
 func handle_player_sprite(tex_idx: int):
