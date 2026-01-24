@@ -7,7 +7,14 @@ extends Control
 
 var lines := [
 	"Well.. I guess I'm alone again",
-	"It's hard to sleep without mom and dad at night."
+	"It's hard to sleep without mom and dad at night.",
+	"I remember a poem they always sang to me before bed.",
+	"Monsters lay waste to you at night.
+	Make them go away by flashing them with white.",
+	"Beware, some may bite,
+	Some may fright.",
+	"But stay away from the dark feline light.
+	One touch and you'll forever go night-night."
 ]
 
 var current_line := 0

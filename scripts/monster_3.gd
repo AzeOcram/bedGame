@@ -3,6 +3,7 @@ extends CharacterBody2D
 #enum Difficulty { EASY, MEDIUM, HARD }
 #@export var difficulty: Difficulty = Difficulty.HARD
 
+@onready var sfx = $sfx
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
 @onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
@@ -63,8 +64,10 @@ func suppress_with_light():
 		# Behavior: Freeze at Start
 		suppressed_by_light = true
 		timer.stop() 
+		
 	else:
 		# Behavior: Scared away to a different spot immediately
+		sfx.play()
 		var last_index = current_index
 		while current_index == last_index:
 			current_index = randi_range(0, positions.size() - 2)

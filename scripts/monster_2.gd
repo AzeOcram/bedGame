@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var sfx = $AudioStreamPlayer2D
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
 @onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
@@ -47,8 +48,11 @@ func _on_TeleportTimer_timeout():
 func suppress_with_light():
 	suppressed_by_light = true
 	timer.stop() # Stop the current movement countdown
-	
 	# Mechanic: Instantly retreat to the very start
+	
+	# Sfx will not play if nasa start si monster
+	if current_index != 0:
+		sfx.play()
 	current_index = 0
 	global_position = positions[0].global_position
 

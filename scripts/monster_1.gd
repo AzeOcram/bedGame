@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var sfx = $sfx
 @onready var timer = $TeleportTimer
 @onready var jumpscare_sound = $AudioStreamPlayer
 @onready var jumpscare_overlay = $JumpscareOverlay/Sprite2D
@@ -27,6 +28,7 @@ func _ready():
 	
 func get_random_delay() -> float:
 	match Global.difficulty:
+		#change these values for difficulty adjustment
 		Global.Difficulty.EASY: return randf_range(10.0, 15.0)
 		Global.Difficulty.MEDIUM: return randf_range(5.0, 10.0)
 		Global.Difficulty.HARD: return randf_range(2.0, 5.0)

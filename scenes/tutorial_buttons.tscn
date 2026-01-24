@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2wpetp7x4u8y"]
 
 [ext_resource type="FontFile" uid="uid://b6qjpm4fpq5c8" path="res://assets/fonts/IBMPlexMono-Medium.ttf" id="1_0grw2"]
-[ext_resource type="Script" uid="uid://dgag04mccbocc" path="res://scripts/tutorial_buttons.gd" id="1_xifdj"]
+[ext_resource type="Script" path="res://scripts/tutorial_buttons.gd" id="1_xifdj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xifdj"]
 bg_color = Color(1, 1, 1, 0)
@@ -38,7 +38,8 @@ offset_right = 325.0
 offset_bottom = 264.0
 theme_override_fonts/font = ExtResource("1_0grw2")
 theme_override_font_sizes/font_size = 32
-text = "TAP HERE TO OPEN LIGHT (Q)"
+text = "TAP HERE TO OPEN LIGHT 
+(Q or ←)"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -61,7 +62,8 @@ offset_right = 326.0
 offset_bottom = 260.0
 theme_override_fonts/font = ExtResource("1_0grw2")
 theme_override_font_sizes/font_size = 32
-text = "TAP HERE TO OPEN LIGHT (E)"
+text = "TAP HERE TO OPEN LIGHT 
+(E or →)"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -84,7 +86,7 @@ offset_right = 228.0
 offset_bottom = 242.0
 theme_override_fonts/font = ExtResource("1_0grw2")
 theme_override_font_sizes/font_size = 32
-text = "TAP HERE TO OPEN LIGHT (W)"
+text = "TAP HERE TO OPEN LIGHT (W or ↓)"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
