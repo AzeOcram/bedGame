@@ -10,7 +10,7 @@ signal timer_complete
 @onready var timeLabel = $Label
 var timer_running = false
 var progress_running = false
-var current_drain_rate = 2.0
+var current_drain_rate = 1.4
 
 var hours = [ "9 PM", "10 PM", "11 PM", "12 AM",
 		"1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM"]
@@ -94,7 +94,7 @@ func startProgressBar() -> void:
 func set_drain_rate(light_on: bool) -> void:
 	if light_on:
 		#current_drain_rate = 0.01  # Slower fill: 1% per second when light is ON
-		current_drain_rate = 0.7
+		current_drain_rate = 1.2
 	else:
 		#current_drain_rate = 0.05  # Faster fill: 2% per second when light is OFF
-		current_drain_rate = 2.0
+		current_drain_rate = 1.4

@@ -44,3 +44,17 @@ func _on_NextLine_timeout():
 
 func _on_End_timeout():
 	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+	
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		skip_cutscene()
+	elif event is InputEventScreenTouch and event.pressed:
+		skip_cutscene()
+
+func skip_cutscene():
+	# Stop all timers so nothing keeps running
+	type_timer.stop()
+	next_timer.stop()
+	end_timer.stop()
+
+	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
