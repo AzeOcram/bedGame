@@ -29,8 +29,8 @@ func _ready():
 func get_random_delay() -> float:
 	match Global.difficulty:
 		Global.Difficulty.EASY: return randf_range(15.0, 25.0)
-		Global.Difficulty.MEDIUM: return randf_range(8.0, 15.0)
-		Global.Difficulty.HARD: return randf_range(3.0, 6.0)
+		Global.Difficulty.MEDIUM: return randf_range(10.0, 15.0)
+		Global.Difficulty.HARD: return randf_range(5.0, 10.0)
 		_: return 15.0
 	
 func start_timer():

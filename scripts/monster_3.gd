@@ -34,7 +34,7 @@ func get_random_delay() -> float:
 	match Global.difficulty:
 		Global.Difficulty.EASY: return randf_range(10.0, 15.0)
 		Global.Difficulty.MEDIUM: return randf_range(5.0, 10.0)
-		Global.Difficulty.HARD: return randf_range(2.0, 4.0)
+		Global.Difficulty.HARD: return randf_range(3.0, 5.0)
 		_: return 10.0
 
 func get_random_jumpscareTime() -> int:
