@@ -22,7 +22,7 @@ texture = ExtResource("2_wi4c7")
 [node name="UI" parent="." instance=ExtResource("2_ygxny")]
 
 [node name="Bed" parent="." instance=ExtResource("4_0rdsr")]
-position = Vector2(596, 251)
+position = Vector2(598, 233)
 
 [node name="DarkFilter" type="Node2D" parent="."]
 

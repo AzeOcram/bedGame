@@ -105,9 +105,9 @@ func handle_player_sprite(tex_idx: int):
 
 func handle_lamp_sprite(tex_idx : int):
 	if tex_idx == 1:
-		lampLeft.texture = preload("res://assets/art/environment/Lamp_On.png")
+		lampLeft.texture = preload("res://assets/art/environment/Lamp_on.png")
 	elif tex_idx == 2:
-		lampRight.texture = preload("res://assets/art/environment/Lamp_On.png")
+		lampRight.texture = preload("res://assets/art/environment/Lamp_on.png")
 
 func turn_off_flashlight():
 	flashlight_working = false
