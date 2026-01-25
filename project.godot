@@ -10,14 +10,18 @@ config_version=5
 
 [application]
 
-config/name="Bed Game"
+config/name="Hypnagogia"
 run/main_scene="uid://d357qsl14u02s"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://1gtywa22x7cn"
 
 [autoload]
 
 Global="*res://scripts/Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor]
 

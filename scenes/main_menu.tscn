@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://jkgpg2lv0yk7"]
+[gd_scene load_steps=8 format=3 uid="uid://jkgpg2lv0yk7"]
 
 [ext_resource type="Script" uid="uid://banbymkjoowmx" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://b08ahocnbjdf" path="res://assets/art/ui/mainmenu.png" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://ds334w1hsyjlo" path="res://assets/art/ui/exitbutton.png" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://7pm3imrbv4n3" path="res://assets/art/ui/title.png" id="3_oa1go"]
-[ext_resource type="Texture2D" uid="uid://cp6qc7oe0s768" path="res://assets/art/ui/settingsbutton.png" id="4_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dhfh7oygepg47" path="res://assets/art/ui/startbutton.png" id="5_oa1go"]
 [ext_resource type="AudioStream" uid="uid://dlbh7qop4mgp8" path="res://assets/sounds/Updated Main Menu Music.mp3" id="6_rtw2f"]
 
@@ -24,40 +23,28 @@ position = Vector2(579, 325)
 texture = ExtResource("2_ekxnf")
 
 [node name="title" type="Sprite2D" parent="background"]
-position = Vector2(-362, -50.999996)
-scale = Vector2(0.17859712, 0.359255)
+position = Vector2(9.000011, -101)
+scale = Vector2(0.2855141, 0.36703148)
 texture = ExtResource("3_oa1go")
 
 [node name="exitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 765.0
-offset_top = 355.0
-offset_right = 1118.0
-offset_bottom = 447.0
+offset_left = 411.0
+offset_top = 526.0
+offset_right = 764.0
+offset_bottom = 618.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
 toggle_mode = true
 icon = ExtResource("3_8ln24")
 flat = true
 expand_icon = true
 
-[node name="settingsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 760.0
-offset_top = 235.0
-offset_right = 1122.0
-offset_bottom = 329.0
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
-toggle_mode = true
-icon = ExtResource("4_rtw2f")
-flat = true
-expand_icon = true
-
 [node name="playButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 802.0
-offset_top = 107.0
-offset_right = 1075.0
-offset_bottom = 214.0
+offset_left = 438.0
+offset_top = 411.0
+offset_right = 711.0
+offset_bottom = 518.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
 icon = ExtResource("5_oa1go")
 flat = true
