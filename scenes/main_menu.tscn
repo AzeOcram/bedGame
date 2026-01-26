@@ -41,10 +41,10 @@ expand_icon = true
 
 [node name="playButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 438.0
-offset_top = 411.0
-offset_right = 711.0
-offset_bottom = 518.0
+offset_left = 447.0
+offset_top = 414.0
+offset_right = 720.0
+offset_bottom = 521.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
 icon = ExtResource("5_oa1go")
 flat = true
